@@ -1,5 +1,5 @@
 body {
-    background: whitesmoke;
+    background: lightblue;
     padding: 0;
     margin: 0;
     display: flex;
@@ -21,14 +21,16 @@ body {
 }
 
 .timer{
-    padding: 200px;
+    
 }
 
 .game-area {
     position: relative;
+    background: white;
     border: 5px solid #000;
     padding: 20px;
     text-align: center;
+    font-size: 25px;
     height: 50%;
     width: 80%;
     margin-bottom: 10px;
@@ -37,8 +39,22 @@ body {
 
 }
 
+#question-area {
+    margin-bottom: 40px;
+}
+
+.button {
+    background: grey;
+    color: blue;
+    padding: 10px 20px;
+    font-size: 25px;
+    width: 45%;
+}
+
 .controls-area {
     position: absolute;
+    display: flex;
+    justify-content: space-between;
     bottom: 0;
     left: 35%;
 }
