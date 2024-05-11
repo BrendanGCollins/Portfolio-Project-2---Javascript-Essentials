@@ -3,8 +3,9 @@ const timerElement = document.getElementById('timer');
 const questionsArea = document.getElementById('questions-area');
 const startbtn = document.getElementById('startbtn');
 
-let currentQuestion = 0;
-let timeLeft = 10;
+let shuffledQuestions = [];
+let currentQuestionPosition = 0;
+//let timeLeft = 10;//
 
 /*function updateTimer() {
     timerElement.textContent = timeLeft + ' seconds';
@@ -15,13 +16,22 @@ let timeLeft = 10;
         timerElement.textContent = 'Time Up!'; 
 }*/
 
+function shuffleQuestions() {
+    shuffledQuestions = [...questionsData]; // Make a copy of questionsData array
+    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
+    }
+}
+
 function createQuestions() {
-    const quizData = questionsData[currentQuestion];
+    const quizData = shuffledQuestions[currentQuestionPosition];
     const questionTitle = document.createElement('div');
     questionTitle.className = 'questionTitle'; //need to create this class//
     questionTitle.innerHTML = quizData.question;
     const questionAnswerArea = document.createElement('div');
     questionAnswerArea.className = 'questionAnswers'; //need to create this class//
+
     
     for (let i=0; i<4; i++){
         const questionAnswer = document.createElement('label');
@@ -29,7 +39,7 @@ function createQuestions() {
         const questionInput = document.createElement('input');
         questionInput.className = 'questionInput'; //need to create this class//
         questionInput.type = 'radio';
-        questionInput.name = 'chosenAnswer_' + currentQuestion;
+        questionInput.name = 'chosenAnswer_' + currentQuestionPosition;
         questionInput.value = quizData.answers[i];
         
         const labeltext = document.createTextNode(quizData.answers[i]);
@@ -41,6 +51,7 @@ function createQuestions() {
     questionsArea.innerHTML = '';
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
+    currentQuestionPosition++;
 }
 
 const questionsData = [
@@ -146,4 +157,7 @@ const questionsData = [
     }
 ]
 
-startbtn.addEventListener("click", createQuestions);
+startbtn.addEventListener("click", function() {
+    shuffleQuestions();
+    createQuestions();
+});
