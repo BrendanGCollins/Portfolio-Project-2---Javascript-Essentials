@@ -1,21 +1,49 @@
 const timerElement = document.getElementById('timer');
+//const timerInterval = setInterval(updateTimer, 1000);//
+const questionsArea = document.getElementById('questions-area');
+const startbtn = document.getElementById('startbtn');
 
+let currentQuestion = 0;
 let timeLeft = 10;
 
-function updateTimer() {
+/*function updateTimer() {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--; 
 
     if (timeLeft < 0) {
         clearInterval(timerInterval);
         timerElement.textContent = 'Time Up!'; 
-        moveToNextQuestion();
-}
+}*/
+
+function createQuestions() {
+    const quizData = questionsData[currentQuestion];
+    const questionTitle = document.createElement('div');
+    questionTitle.className = 'questionTitle'; //need to create this class//
+    questionTitle.innerHTML = quizData.question;
+    const questionAnswerArea = document.createElement('div');
+    questionAnswerArea.className = 'questionAnswers'; //need to create this class//
+    
+    for (let i=0; i<4; i++){
+        const questionAnswer = document.createElement('label');
+        questionAnswer.className = 'questionAnswer'; //need to create this class//
+        const questionInput = document.createElement('input');
+        questionInput.className = 'questionInput'; //need to create this class//
+        questionInput.type = 'radio';
+        questionInput.name = 'chosenAnswer_' + currentQuestion;
+        questionInput.value = quizData.answers[i];
+        
+        const labeltext = document.createTextNode(quizData.answers[i]);
+        questionAnswer.appendChild(questionInput);
+        questionAnswer.appendChild(labeltext);
+        questionAnswerArea.appendChild(questionAnswer);
+
+    }
+    questionsArea.innerHTML = '';
+    questionsArea.appendChild(questionTitle);
+    questionsArea.appendChild(questionAnswerArea);
 }
 
-const timerInterval = setInterval(updateTimer, 1000);
-
-const questions = [
+const questionsData = [
     {
         question: "What is Javascript?",
         answers: ["A programming language", "A database management system", "A markup language", "An operating system"],
@@ -117,3 +145,5 @@ const questions = [
         correctAnswer: 3
     }
 ]
+
+startbtn.addEventListener("click", createQuestions);
