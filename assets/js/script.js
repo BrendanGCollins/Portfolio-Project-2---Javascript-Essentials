@@ -157,7 +157,8 @@ const questionsData = [
     }
 ]
 
+shuffleQuestions();
+
 startbtn.addEventListener("click", function() {
-    shuffleQuestions();
     createQuestions();
 });
