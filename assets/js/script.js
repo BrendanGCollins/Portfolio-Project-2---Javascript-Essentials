@@ -2,6 +2,7 @@ const timerElement = document.getElementById('timer');
 //const timerInterval = setInterval(updateTimer, 1000);//
 const questionsArea = document.getElementById('questions-area');
 const startbtn = document.getElementById('startbtn');
+const nextbtn = document.getElementById('nextbtn');
 
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
@@ -159,6 +160,14 @@ const questionsData = [
 
 shuffleQuestions();
 
+nextbtn.style.display = "none";
+
 startbtn.addEventListener("click", function() {
+    startbtn.style.display = "none";
+    nextbtn.style.display = "block";
+    createQuestions();
+});
+
+nextbtn.addEventListener("click", function() {
     createQuestions();
 });
