@@ -65,7 +65,7 @@ function createQuestions() {
 }
 // Update score area text content
 function updateScore() {
-    scoreArea.textContent = 'Score: ' + score; 
+    scoreArea.textContent = 'Score: ' + score.toString(); 
 }
 //Question Array
 const questionsData = [
@@ -194,12 +194,13 @@ nextbtn.addEventListener("click", function() {
     const selectedAnswerIndex = parseInt(selectedAnswer.value);
 
     // Check if the selected answer is correct
-    if (selectedAnswerIndex === questionsData[currentQuestionPosition].correctAnswer) {
+    if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
         alert("Correct!");
-        score++;
-        scoreArea.textContent = 'Score: '  +score.toString();
+        score++;         
+        //Updates score once next button is clicked
+        updateScore();
     } else {
-        alert("Incorrect!. The correct answer is: " + questionsData[currentQuestionPosition].answers[questionsData[currentQuestionPosition].correctAnswer]);
+        alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
     
     }
 
@@ -208,6 +209,5 @@ nextbtn.addEventListener("click", function() {
     // Go to the next question once next button is clicked
     createQuestions();
 
-    //Updates score once next button is clicked
-    updateScore();
+
 });
