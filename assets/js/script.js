@@ -1,8 +1,14 @@
+//timer
 const timerElement = document.getElementById('timer');
-//const timerInterval = setInterval(updateTimer, 1000);//
+//Questions Area
 const questionsArea = document.getElementById('questions-area');
+//Control Buttons
 const startbtn = document.getElementById('startbtn');
 const nextbtn = document.getElementById('nextbtn');
+//Score Area
+const scoreArea = document.createElement('div');
+scoreArea.className = 'score-area';
+scoreArea.textContent = 'Score: 0';
 
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
@@ -52,6 +58,7 @@ function createQuestions() {
     questionsArea.innerHTML = '';
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
+    document.body.appendChild(scoreArea);
     currentQuestionPosition++;
 }
 
@@ -169,5 +176,24 @@ startbtn.addEventListener("click", function() {
 });
 
 nextbtn.addEventListener("click", function() {
+    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition - 1) + '"]:checked');
+    if (!selectedAnswer) {
+        // No answer selected
+        alert("Please select an answer.");
+        return;
+    }
+
+    const selectedAnswerIndex = parseInt(selectedAnswer.value); // Convert selected answer value to integer
+
+    // Check if the selected answer is correct
+    if (selectedAnswerIndex === questionsData[currentQuestionPosition - 1].correctAnswer) {
+        alert("Correct!");
+        // You can perform additional actions here if the answer is correct
+    } else {
+        alert("Incorrect!. The correct answer is: " + questionsData[currentQuestionPosition - 1].answers[questionsData[currentQuestionPosition - 1].correctAnswer]);
+    
+    }
+
+    // Go to the next question
     createQuestions();
 });
