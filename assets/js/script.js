@@ -8,12 +8,12 @@ const nextbtn = document.getElementById('nextbtn');
 //Score Area
 const scoreArea = document.createElement('div');
 scoreArea.className = 'score-area';
-scoreArea.textContent = 'Score: 0';
+scoreArea.textContent = 'Score: ';
 
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
 let score = 0;
-//let timeLeft = 10;//
+//let timeLeft = 10;//w
 
 /*function updateTimer() {
     timerElement.textContent = timeLeft + ' seconds';
@@ -196,6 +196,8 @@ nextbtn.addEventListener("click", function() {
     // Check if the selected answer is correct
     if (selectedAnswerIndex === questionsData[currentQuestionPosition].correctAnswer) {
         alert("Correct!");
+        score++;
+        scoreArea.textContent = 'Score: '  +score.toString();
     } else {
         alert("Incorrect!. The correct answer is: " + questionsData[currentQuestionPosition].answers[questionsData[currentQuestionPosition].correctAnswer]);
     
