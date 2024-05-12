@@ -12,6 +12,7 @@ scoreArea.textContent = 'Score: 0';
 
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
+let score = 0;
 //let timeLeft = 10;//
 
 /*function updateTimer() {
@@ -46,8 +47,9 @@ function createQuestions() {
         const questionInput = document.createElement('input');
         questionInput.className = 'questionInput'; //need to create this class//
         questionInput.type = 'radio';
-        questionInput.name = 'chosenAnswer_' + currentQuestionPosition;
-        questionInput.value = quizData.answers[i];
+        questionInput.name = 'chosenAnswer_' + currentQuestionPosition;        
+        //questionInput.value = quizData.answers[i];
+        questionInput.value = i;
         
         const labeltext = document.createTextNode(quizData.answers[i]);
         questionAnswer.appendChild(questionInput);
@@ -59,9 +61,13 @@ function createQuestions() {
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
     document.body.appendChild(scoreArea);
-    currentQuestionPosition++;
+    
 }
-
+// Update score area text content
+function updateScore() {
+    scoreArea.textContent = 'Score: ' + score; 
+}
+//Question Array
 const questionsData = [
     {
         question: "What is Javascript?",
@@ -176,24 +182,30 @@ startbtn.addEventListener("click", function() {
 });
 
 nextbtn.addEventListener("click", function() {
-    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition - 1) + '"]:checked');
+    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
+    
     if (!selectedAnswer) {
         // No answer selected
         alert("Please select an answer.");
         return;
     }
 
-    const selectedAnswerIndex = parseInt(selectedAnswer.value); // Convert selected answer value to integer
+     // Convert selected answer value to integer
+    const selectedAnswerIndex = parseInt(selectedAnswer.value);
 
     // Check if the selected answer is correct
-    if (selectedAnswerIndex === questionsData[currentQuestionPosition - 1].correctAnswer) {
+    if (selectedAnswerIndex === questionsData[currentQuestionPosition].correctAnswer) {
         alert("Correct!");
-        // You can perform additional actions here if the answer is correct
     } else {
-        alert("Incorrect!. The correct answer is: " + questionsData[currentQuestionPosition - 1].answers[questionsData[currentQuestionPosition - 1].correctAnswer]);
+        alert("Incorrect!. The correct answer is: " + questionsData[currentQuestionPosition].answers[questionsData[currentQuestionPosition].correctAnswer]);
     
     }
 
-    // Go to the next question
+    currentQuestionPosition++;
+
+    // Go to the next question once next button is clicked
     createQuestions();
+
+    //Updates score once next button is clicked
+    updateScore();
 });
