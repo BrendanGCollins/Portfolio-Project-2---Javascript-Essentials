@@ -2,10 +2,16 @@
 const timerElement = document.getElementById('timer');
 //Questions Area
 const questionsArea = document.getElementById('questions-area');
+
+const leadersArea = document.getElementById('leaders-area');
 //Control Buttons
 const startbtn = document.getElementById('startbtn');
 const nextbtn = document.getElementById('nextbtn');
 const finishbtn = document.getElementById('finishbtn');
+const retrybtn = document.getElementById('retrybtn');
+
+
+
 //Score Area
 const scoreArea = document.createElement('div');
 scoreArea.className = 'score-area';
@@ -15,16 +21,32 @@ let shuffledQuestions = [];
 let currentQuestionPosition = 0;
 let score = 0;
 let maxQuestion = 0;
-//let timeLeft = 10;//w
+let leadersPosition = 1;
+let timeLeft = 10;
+let timerInterval;
 
-/*function updateTimer() {
+function updateTimer() {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--; 
+   
 
     if (timeLeft < 0) {
         clearInterval(timerInterval);
         timerElement.textContent = 'Time Up!'; 
-}*/
+        nextbtn.click();
+        timeLeft = 10;
+        updateTimer(); // Start the timer again
+        timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
+    timeIsUp = true;
+
+
+    if (currentQuestionPosition < questionsData.length - 1) {
+            currentQuestionPosition++;
+            createQuestions();
+        }
+}
+}
 
 function shuffleQuestions() {
     shuffledQuestions = [...questionsData]; // Make a copy of questionsData array
@@ -177,11 +199,14 @@ shuffleQuestions();
 
 nextbtn.style.display = "none";
 finishbtn.style.display = "none";
+retrybtn.style.display = "none";
 
 startbtn.addEventListener("click", function() {
     startbtn.style.display = "none";
     nextbtn.style.display = "block";
     createQuestions();
+    timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
 });
 
 nextbtn.addEventListener("click", function() {
@@ -189,11 +214,19 @@ nextbtn.addEventListener("click", function() {
     if (maxQuestion <= 10){
     const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
     
-    if (!selectedAnswer) {
-        // No answer selected
-        alert("Please select an answer.");
-        return;
+    if (!timeIsUp ){
+        if (!selectedAnswer) {
+            // No answer selected
+            alert("Please select an answer.");
+            return;
+        }
     }
+
+    timeIsUp = false;
+
+  
+  
+
 
      // Convert selected answer value to integer
     const selectedAnswerIndex = parseInt(selectedAnswer.value);
@@ -204,7 +237,7 @@ nextbtn.addEventListener("click", function() {
         score++;         
         //Updates score once next button is clicked
         updateScore();
-    } else {
+    } else  {
         alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
     
     }
@@ -222,10 +255,40 @@ nextbtn.addEventListener("click", function() {
 
 
 }
-else {
-   
-    
 
+
+});
+
+
+finishbtn.addEventListener("click", function() {
+
+
+
+
+ const userInput = window.prompt("Please enter some text:");
+
+// Check if the user clicked "OK" and entered some text
+if (userInput !== null) {
+    // Do something with the user input
+    console.log("User entered:", userInput);
+    finishbtn.style.display = "none";
+    questionsArea.style.display = "none";
+    retrybtn.style.display = "block";
+
+} else {
+    // Handle the case where the user clicked "Cancel"
+    console.log("User clicked Cancel or closed the prompt.");
 }
+
+
+
+});
+
+
+
+retrybtn.addEventListener("click", function() {
+    questionsArea.style.display = "blocks";
+    startbtn.style.display = "blocks";
+
 
 });
