@@ -5,6 +5,7 @@ const questionsArea = document.getElementById('questions-area');
 //Control Buttons
 const startbtn = document.getElementById('startbtn');
 const nextbtn = document.getElementById('nextbtn');
+const finishbtn = document.getElementById('finishbtn');
 //Score Area
 const scoreArea = document.createElement('div');
 scoreArea.className = 'score-area';
@@ -13,6 +14,7 @@ scoreArea.textContent = 'Score: ';
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
 let score = 0;
+let maxQuestion = 0;
 //let timeLeft = 10;//w
 
 /*function updateTimer() {
@@ -174,6 +176,7 @@ const questionsData = [
 shuffleQuestions();
 
 nextbtn.style.display = "none";
+finishbtn.style.display = "none";
 
 startbtn.addEventListener("click", function() {
     startbtn.style.display = "none";
@@ -182,6 +185,8 @@ startbtn.addEventListener("click", function() {
 });
 
 nextbtn.addEventListener("click", function() {
+    
+    if (maxQuestion <= 10){
     const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
     
     if (!selectedAnswer) {
@@ -208,6 +213,19 @@ nextbtn.addEventListener("click", function() {
 
     // Go to the next question once next button is clicked
     createQuestions();
+    
+    if (maxQuestion == 10){
+        nextbtn.style.display = "none";
+        finishbtn.style.display = "block";
+    }
+    maxQuestion++;
 
+
+}
+else {
+   
+    
+
+}
 
 });
