@@ -216,12 +216,14 @@ nextbtn.addEventListener("click", function() {
     if (maxQuestion < 10){
     const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
     
-    if (!timeIsUp ){
-        if (!selectedAnswer) {
-            // No answer selected
-            alert("Please select an answer.");
-            return;
-        }
+    if (!timeIsUp && !selectedAnswer) {
+        // No answer selected
+        document.querySelector('.game-area').classList.add('incorrect');
+        // Revert to original color after 0.5 second      
+        setTimeout(() => {
+            document.querySelector('.game-area').classList.remove('incorrect');
+        }, 500);
+        return;
     }
 
     timeIsUp = false;
@@ -234,15 +236,23 @@ nextbtn.addEventListener("click", function() {
     const selectedAnswerIndex = parseInt(selectedAnswer.value);
 
     // Check if the selected answer is correct
-    if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
-        alert("Correct!");
-        score++;         
-        //Updates score once next button is clicked
-        updateScore();
-    } else  {
-        alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
-    
-    }
+if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
+    document.querySelector('.game-area').classList.add('correct');
+    score++;       
+    //Updates score once next button is clicked
+    updateScore();
+    // Revert to original color after 0.5 second      
+    setTimeout(() => {
+        document.querySelector('.game-area').classList.remove('correct');
+    }, 500);
+} else  {
+    alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
+    document.querySelector('.game-area').classList.add('incorrect');
+    // Revert to original color after 0.5 second      
+    setTimeout(() => {
+        document.querySelector('.game-area').classList.remove('incorrect');
+    }, 500);
+}
 
     currentQuestionPosition++;
 
@@ -285,8 +295,8 @@ if (userInput !== null) {
 });
 
 retrybtn.addEventListener("click", function() {
-    questionsArea.style.display = "blocks";
-    startbtn.style.display = "blocks";
+    questionsArea.style.display = "block";
+    startbtn.style.display = "block";
 
 
 });
