@@ -113,103 +113,103 @@ function updateScore() {
 // Question Array
 const questionsData = [
     {
-        question: "What is Javascript?",
-        answers: ["A programming language", "A database management system", "A markup language", "An operating system"],
+        question: "What is the capital of France?",
+        answers: ["Paris", "Berlin", "Rome", "London"],
         correctAnswer: 0
     },
     {
-        question: "What is the purpose of the 'typeof' operator in JavaScript?",
-        answers: ["To create a new variable", "To concatenate strings", "To check the data type of a variable", "To define a function"],
+        question: "Which planet is known as the Red Planet?",
+        answers: ["Earth", "Jupiter", "Mars ", "Venus"],
         correctAnswer: 2
     },
     {
-        question: "How do you declare a variable in JavaScript?",
-        answers: ["var", "variable", "let", "v"],
+        question: "Who painted the Mona Lisa?",
+        answers: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
         correctAnswer: 0
     },
     {
-        question: "What does the '===' operator in JavaScript do?",
-        answers: ["Assigns a value to a variable", "Checks if a variable is defined", "Performs bitwise XOR operation", "Compares values for equality without type coercion"],
+        question: "What is the largest mammal in the world?",
+        answers: ["Elephant", "Giraffe", "Hippopotamus", "Blue whale"],
         correctAnswer: 3
     },
     {
-        question: "Which keyword is used to define a function in JavaScript?",
-        answers: ["def", "func", "function", "define"],
+        question: "Who wrote 'Romeo and Juliet'?",
+        answers: ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
         correctAnswer: 2
     },
     {
-        question: "How do you comment a single-line in JavaScript?",
-        answers: ["/* */", "//", "#", "---"],
+        question: "Which country is known as the Land of the Rising Sun?",
+        answers: ["China", "Japan", "South Korea", "India"],
         correctAnswer: 1
     },
     {
-        question: " Which method is used to remove the last element from an array?",
-        answers: ["shift()", "pop()", "splice()", "slice()"],
+        question: "What is the chemical symbol for water?",
+        answers: ["Wa", "H2O", "O2", "CO2"],
         correctAnswer: 1
     },
     {
-        question: "How do you check if a variable is an array in JavaScript?",
-        answers: [" isObject()", "typeofArray()", "arrayCheck()", "isArray()"],
+        question: "Who is known as the father of modern physics?",
+        answers: [" Isaac Newton", "Galileo Galilei", "Nikola Tesla", "Albert Einstein"],
         correctAnswer: 3
     },
     {
-        question: "Which keyword is used to prevent a variable from being modified?",
-        answers: ["freeze", "lock", "const", "protect"],
+        question: "What is the tallest mountain in the world?",
+        answers: ["Mount Kilimanjaro", "Mount Fuji", "Mount Everest", "Mount McKinley"],
         correctAnswer: 2
     },
     {
-        question: "What does the acronym 'JSON' stand for in JavaScript?",
-        answers: ["JavaScript Object Notation", "Java Syntax Object Notation", "Just Simple Object Naming", "JavaScript Oriented Notation"],
+        question: "What is the capital of Australia?",
+        answers: ["Canberra", "Sydney", "Melbourne", "Brisbane"],
         correctAnswer: 0
     },
     {
-        question: "What does the 'isNaN' function do?",
-        answers: ["Checks if a value is a number", "Checks if a value is not a number", "Converts a string to a number", "Rounds a number to the nearest integer"],
+        question: "Which famous scientist developed the theory of relativity?",
+        answers: ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Galileo Galilei"],
         correctAnswer: 1
     },
     {
-        question: "How do you convert a string to a number in JavaScript?",
-        answers: ["parseInt()", "toNumber()", "Number()", "stringToNumber()"],
+        question: "What is the largest ocean on Earth?",
+        answers: ["Indian Ocean", "Arctic Ocean", "Pacific Ocean", "Atlantic Ocean"],
         correctAnswer: 2
     },
     {
-        question: "What does the 'addEventListener' method do in JavaScript?",
-        answers: ["Removes an event listener from a DOM element", "Appends a new child element to a parent element", "Adds an event listener to a DOM element", "Adds a new event to the event queue"],
+        question: "Which bird is known for its ability to imitate human speech?",
+        answers: ["Penguin", "Eagle", "Parrot", "Sparrow"],
         correctAnswer: 2
     },
     {
-        question: "How do you reverse the order of elements in an array?",
-        answers: ["flip()", "invert()", "reverse()", "backward()"],
+        question: "Who was the first person to step on the moon?",
+        answers: ["Buzz Aldrin", "Yuri Gagarin", "Neil Armstrong", "Alan Shepard"],
         correctAnswer: 2
     },
     {
-        question: "What is the purpose of the 'concat' method in JavaScript?",
-        answers: ["Creates a new array with the results of calling a function for every array element", "Combines two arrays into one", "Adds elements to the end of an array", "Removes elements from an array"],
+        question: "What is the hardest natural substance on Earth?",
+        answers: ["Gold", "Diamond", "Iron", "Platinum"],
         correctAnswer: 1
     },
     {
-        question: "What is the purpose of the 'slice' method in JavaScript?",
-        answers: ["Returns a section of a string", "Removes elements from an array and returns the removed elements", "Adds elements to the end of an array", "Reverses the elements of an array"],
+        question: "Which planet is closest to the Sun?",
+        answers: ["Mercury", "Mars", "Venus", "Jupiter"],
         correctAnswer: 0
     },
     {
-        question: "What does the 'toLowerCase' method do in JavaScript?",
-        answers: ["Splits a string into an array of substrings", "Removes leading and trailing whitespaces from a string", "Converts a string to uppercase", "Converts a string to lowercase"],
+        question: "Who wrote the Harry Potter book series?",
+        answers: ["George R.R. Martin", "J.R.R. Tolkien", "Suzanne Collins", "J.R.R. Tolkien"],
         correctAnswer: 3
     },
     {
-        question: "How do you convert a number to a string in JavaScript?",
-        answers: ["toText()", "toString()", "stringify()", "numberToString()"],
+        question: "What is the chemical symbol for gold?",
+        answers: ["Cu", "Au", "Fe", "Ag"],
         correctAnswer: 1
     },
     {
-        question: "What is the purpose of the 'includes' method in JavaScript?",
-        answers: ["Checks if an array includes a certain element", "Checks if a value is not a number", "Checks if a value is a number", "Checks if a string includes a certain substring"],
+        question: "What is the currency of Japan?",
+        answers: ["Yen", "Dollar", "Pound", "Euro"],
         correctAnswer: 0
     },
     {
-        question: "What is the purpose of the 'find' method in JavaScript?",
-        answers: ["Iterates over the elements of an array and applies a function to each element", "Creates a new array with all elements that pass a test", "Reduces the array to a single value", "Returns the first element in an array that satisfies a provided testing function"],
+        question: "Who painted the famous artwork 'The Starry Night'?",
+        answers: ["Pablo Picasso", "Claude Monet", "Leonardo da Vinci", "Vincent van Gogh"],
         correctAnswer: 3
     }
 ];
