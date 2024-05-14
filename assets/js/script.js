@@ -20,7 +20,7 @@ let timerInterval;
 let timeIsUp = false;
 
 // Function to update timer
-function updateTimer() {
+updateTimer = () => {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--;
 
@@ -32,7 +32,7 @@ function updateTimer() {
     }
 }
 // Function to move to the next question if no answer selected
-function moveNext() {
+moveNext = () => {
     // Reset timeIsUp flag
     timeIsUp = false;
 
