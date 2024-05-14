@@ -2,8 +2,8 @@
 const timerElement = document.getElementById('timer');
 //Questions Area
 const questionsArea = document.getElementById('questions-area');
-
 const leadersArea = document.getElementById('leaders-area');
+
 //Control Buttons
 const startbtn = document.getElementById('startbtn');
 const nextbtn = document.getElementById('nextbtn');
@@ -89,6 +89,8 @@ function createQuestions() {
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
     document.body.appendChild(scoreArea);
+
+    maxQuestion++;
     
 }
 // Update score area text content
@@ -275,32 +277,51 @@ if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAn
 
 
 finishbtn.addEventListener("click", function() {
-
-
-
-
- const userInput = window.prompt("Please enter some text:");
-
-// Check if the user clicked "OK" and entered some text
-if (userInput !== null) {
-    // Do something with the user input
-    console.log("User entered:", userInput);
-    finishbtn.style.display = "none";
+    //Display congratulations message and your score
+    const congratulationsMessage = document.createElement('div');
+    congratulationsMessage.textContent = "Congratulations! You've completed the quiz.";
+    const scoreMessage = document.createElement('div');
+    scoreMessage.textContent = "Your score: " + score + " out of 10.";
+     // Hide the questions area and finish button
     questionsArea.style.display = "none";
-    retrybtn.style.display = "block";
+    finishbtn.style.display = "none";
 
-} else {
-    // Handle the case where the user clicked "Cancel"
-    console.log("User clicked Cancel or closed the prompt.");
-}
+    // Add the congratulations message and score to the leaders area
+    leadersArea.appendChild(congratulationsMessage);
+    leadersArea.appendChild(scoreMessage);
 
-
-
+    retrybtn.style.display = "block"; // Show the retry button
 });
 
 retrybtn.addEventListener("click", function() {
+    // Reset variables
+    currentQuestionPosition = 0;
+    score = 0;
+    maxQuestion = 0;
+    timeLeft = 10;
+    timeIsUp = false;
+
+    // Clear the leaders area
+    leadersArea.innerHTML = '';
+
+    // Hide the retry button
+    retrybtn.style.display = "none";
+    // Reset the score area 
+    scoreArea.textContent = 'Score: 0';
+
+    // Display the questions area and restart quiz
     questionsArea.style.display = "block";
-    startbtn.style.display = "block";
+    startbtn.style.display = "none";
+    nextbtn.style.display = "block";
 
+    // Hide the explanation div
+    document.getElementById('explanation').style.display = "none";
 
+    // Reset the timer display
+    timerElement.textContent = '';
+
+    // Reset the shuffled questions
+    shuffleQuestions();
+
+    createQuestions()
 });
