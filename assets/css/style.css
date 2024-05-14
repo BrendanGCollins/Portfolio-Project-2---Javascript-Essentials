@@ -20,8 +20,10 @@ body {
     top: 0;
 }
 
-.timer{
-    
+#timer{
+    font-size: 25px;
+    padding: 5px;
+    font-weight: bold;
 }
 
 .game-area {

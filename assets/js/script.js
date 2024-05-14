@@ -207,6 +207,7 @@ retrybtn.style.display = "none";
 startbtn.addEventListener("click", function() {
     startbtn.style.display = "none";
     nextbtn.style.display = "block";
+    document.getElementById('explanation').style.display = "none";
     createQuestions();
     timerInterval = setInterval(updateTimer, 1000);
     updateTimer();
