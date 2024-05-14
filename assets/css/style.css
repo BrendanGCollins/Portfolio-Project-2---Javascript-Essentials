@@ -66,3 +66,8 @@ body {
 .game-area.incorrect {
     background-color: red;
 }
+
+.correct-answer {
+    color: green;
+    font-weight: bold;
+}

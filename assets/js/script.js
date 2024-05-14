@@ -221,10 +221,10 @@ nextbtn.addEventListener("click", function() {
     if (!timeIsUp && !selectedAnswer) {
         // No answer selected
         document.querySelector('.game-area').classList.add('incorrect');
-        // Revert to original color after 1 second      
+        // Revert to original color after 2 second      
         setTimeout(() => {
             document.querySelector('.game-area').classList.remove('incorrect');
-        }, 1000);
+        }, 2000);
         return;
     }
 
@@ -239,19 +239,21 @@ if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAn
     score++;       
     //Updates score once next button is clicked
     updateScore();
-    // Revert to original color after 1 second      
+    // Revert to original color after 2 second      
     setTimeout(() => {
         document.querySelector('.game-area').classList.remove('correct');
-    }, 1000);
+    }, 2000);
 } else  {
-    alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
+    const correctAnswerIndex = shuffledQuestions[currentQuestionPosition].correctAnswer;
+    const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
+    correctAnswerLabel.classList.add('correct-answer');
     document.querySelector('.game-area').classList.add('incorrect');
-    // Revert to original color after 1 second      
+    // Revert to original color after 2 second
     setTimeout(() => {
         document.querySelector('.game-area').classList.remove('incorrect');
-    }, 1000);
+        correctAnswerLabel.classList.remove('correct-answer');
+    }, 2000);
 }
-
     currentQuestionPosition++;
 
     // Go to the next question after a delay of 2 seconds
