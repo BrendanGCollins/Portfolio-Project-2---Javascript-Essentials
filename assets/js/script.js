@@ -57,6 +57,8 @@ function shuffleQuestions() {
 }
 
 function createQuestions() {
+    timeLeft=10;
+    updateTimer();
   
     const quizData = shuffledQuestions[currentQuestionPosition];
     const questionTitle = document.createElement('div');
@@ -219,18 +221,14 @@ nextbtn.addEventListener("click", function() {
     if (!timeIsUp && !selectedAnswer) {
         // No answer selected
         document.querySelector('.game-area').classList.add('incorrect');
-        // Revert to original color after 0.5 second      
+        // Revert to original color after 1 second      
         setTimeout(() => {
             document.querySelector('.game-area').classList.remove('incorrect');
-        }, 500);
+        }, 1000);
         return;
     }
 
     timeIsUp = false;
-
-  
-  
-
 
      // Convert selected answer value to integer
     const selectedAnswerIndex = parseInt(selectedAnswer.value);
@@ -241,23 +239,25 @@ if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAn
     score++;       
     //Updates score once next button is clicked
     updateScore();
-    // Revert to original color after 0.5 second      
+    // Revert to original color after 1 second      
     setTimeout(() => {
         document.querySelector('.game-area').classList.remove('correct');
-    }, 500);
+    }, 1000);
 } else  {
     alert("Incorrect!. The correct answer is: " + shuffledQuestions[currentQuestionPosition].answers[shuffledQuestions[currentQuestionPosition].correctAnswer]);
     document.querySelector('.game-area').classList.add('incorrect');
-    // Revert to original color after 0.5 second      
+    // Revert to original color after 1 second      
     setTimeout(() => {
         document.querySelector('.game-area').classList.remove('incorrect');
-    }, 500);
+    }, 1000);
 }
 
     currentQuestionPosition++;
 
-    // Go to the next question once next button is clicked
+    // Go to the next question after a delay of 2 seconds
+    setTimeout(() => {
     createQuestions();
+    }, 2000);
     
     if (maxQuestion == 9){
         nextbtn.style.display = "none";
