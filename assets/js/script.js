@@ -28,7 +28,29 @@ function updateTimer() {
         clearInterval(timerInterval);
         timerElement.textContent = 'Time Up!';
         timeIsUp = true;
-        nextbtn.click(); // Automatically move to the next question
+        moveNext();
+    }
+}
+// Function to move to the next question if no answer selected
+function moveNext() {
+    // Reset timeIsUp flag
+    timeIsUp = false;
+
+    // Increment question position
+    currentQuestionPosition++;
+
+    // Create the next question
+    createQuestions();
+
+    // Start the timer for the next question
+    timeLeft = 10;
+    timerElement.textContent = timeLeft + ' seconds';
+    timerInterval = setInterval(updateTimer, 1000);    
+
+    // Check if it's the last question and adjust button visibility accordingly
+    if (maxQuestion === 9) {
+        nextbtn.style.display = "none";
+        finishbtn.style.display = "block";
     }
 }
 
@@ -114,8 +136,8 @@ const questionsData = [
         correctAnswer: 1
     },
     {
-        question: " What does the 'this' keyword refer to in JavaScript?",
-        answers: ["The current function", "The global object", "The parent object", "The variable being passed to a function"],
+        question: " Which method is used to remove the last element from an array?",
+        answers: ["shift()", "pop()", "splice()", "slice()"],
         correctAnswer: 1
     },
     {
@@ -146,7 +168,7 @@ const questionsData = [
     {
         question: "What does the 'addEventListener' method do in JavaScript?",
         answers: ["Removes an event listener from a DOM element", "Appends a new child element to a parent element", "Adds an event listener to a DOM element", "Adds a new event to the event queue"],
-        correctAnswer: 3
+        correctAnswer: 2
     },
     {
         question: "How do you reverse the order of elements in an array?",
@@ -207,7 +229,7 @@ startbtn.addEventListener("click", function() {
 nextbtn.addEventListener("click", function() {
     if (maxQuestion < 10) {
         const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
-
+        console.log("Selected answer:", selectedAnswer);
         if (!timeIsUp && !selectedAnswer) {
             // No answer selected
             document.querySelector('.game-area').classList.add('incorrect');
