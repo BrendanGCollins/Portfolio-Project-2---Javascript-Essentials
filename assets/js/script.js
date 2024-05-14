@@ -25,7 +25,7 @@ let leadersPosition = 1;
 let timeLeft = 10;
 let timerInterval;
 
-function updateTimer() {
+    updateTimer = () => {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--; 
    
@@ -212,7 +212,8 @@ startbtn.addEventListener("click", function() {
 
 nextbtn.addEventListener("click", function() {
     
-    if (maxQuestion <= 10){
+    
+    if (maxQuestion < 10){
     const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
     
     if (!timeIsUp ){
@@ -248,16 +249,14 @@ nextbtn.addEventListener("click", function() {
     // Go to the next question once next button is clicked
     createQuestions();
     
-    if (maxQuestion == 10){
+    if (maxQuestion == 9){
         nextbtn.style.display = "none";
         finishbtn.style.display = "block";
     }
-    maxQuestion++;
+   
 
 
 }
-
-
 });
 
 
