@@ -1,103 +1,87 @@
-//timer
+// Define variables
 const timerElement = document.getElementById('timer');
-//Questions Area
 const questionsArea = document.getElementById('questions-area');
 const leadersArea = document.getElementById('leaders-area');
-
-//Control Buttons
 const startbtn = document.getElementById('startbtn');
 const nextbtn = document.getElementById('nextbtn');
 const finishbtn = document.getElementById('finishbtn');
 const retrybtn = document.getElementById('retrybtn');
-
-
-
-//Score Area
 const scoreArea = document.createElement('div');
+
+// Initialize variables
 scoreArea.className = 'score-area';
 scoreArea.textContent = 'Score: ';
-
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
 let score = 0;
 let maxQuestion = 0;
-let leadersPosition = 1;
 let timeLeft = 10;
 let timerInterval;
 let timeIsUp = false;
 
-    updateTimer = () => {
+// Function to update timer
+function updateTimer() {
     timerElement.textContent = timeLeft + ' seconds';
-    timeLeft--; 
-   
+    timeLeft--;
 
     if (timeLeft < 0) {
         clearInterval(timerInterval);
-        timerElement.textContent = 'Time Up!'; 
-        nextbtn.click();
-        timeLeft = 10;
-        updateTimer(); // Start the timer again
-        timerInterval = setInterval(updateTimer, 1000);
-    updateTimer();
-    timeIsUp = true;
-
-
-    if (currentQuestionPosition < questionsData.length - 1) {
-            currentQuestionPosition++;
-            createQuestions();
-        }
-}
+        timerElement.textContent = 'Time Up!';
+        timeIsUp = true;
+        nextbtn.click(); // Automatically move to the next question
+    }
 }
 
+// Function to shuffle questions
 function shuffleQuestions() {
-    shuffledQuestions = [...questionsData]; // Make a copy of questionsData array
+    shuffledQuestions = [...questionsData];
     for (let i = shuffledQuestions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
     }
 }
 
+// Function to create questions
 function createQuestions() {
-    timeLeft=10;
+    timeLeft = 10;
     updateTimer();
-  
+
     const quizData = shuffledQuestions[currentQuestionPosition];
     const questionTitle = document.createElement('div');
-    questionTitle.className = 'questionTitle'; //need to create this class//
-    questionTitle.innerHTML = quizData.question;
+    questionTitle.className = 'questionTitle';
+    questionTitle.textContent = quizData.question;
     const questionAnswerArea = document.createElement('div');
-    questionAnswerArea.className = 'questionAnswers'; //need to create this class//
+    questionAnswerArea.className = 'questionAnswers';
 
-    
-    for (let i=0; i<4; i++){
+    for (let i = 0; i < 4; i++) {
         const questionAnswer = document.createElement('label');
-        questionAnswer.className = 'questionAnswer'; //need to create this class//
+        questionAnswer.className = 'questionAnswer';
         const questionInput = document.createElement('input');
-        questionInput.className = 'questionInput'; //need to create this class//
+        questionInput.className = 'questionInput';
         questionInput.type = 'radio';
-        questionInput.name = 'chosenAnswer_' + currentQuestionPosition;        
-        //questionInput.value = quizData.answers[i];
+        questionInput.name = 'chosenAnswer_' + currentQuestionPosition;
         questionInput.value = i;
-        
+
         const labeltext = document.createTextNode(quizData.answers[i]);
         questionAnswer.appendChild(questionInput);
         questionAnswer.appendChild(labeltext);
         questionAnswerArea.appendChild(questionAnswer);
-
     }
+
     questionsArea.innerHTML = '';
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
     document.body.appendChild(scoreArea);
 
     maxQuestion++;
-    
 }
+
 // Update score area text content
 function updateScore() {
-    scoreArea.textContent = 'Score: ' + score.toString(); 
+    scoreArea.textContent = 'Score: ' + score.toString();
 }
-//Question Array
+
+// Question Array
 const questionsData = [
     {
         question: "What is Javascript?",
@@ -199,14 +183,17 @@ const questionsData = [
         answers: ["Iterates over the elements of an array and applies a function to each element", "Creates a new array with all elements that pass a test", "Reduces the array to a single value", "Returns the first element in an array that satisfies a provided testing function"],
         correctAnswer: 3
     }
-]
+];
 
+// Shuffle questions at the beginning
 shuffleQuestions();
 
+// Hide buttons initially
 nextbtn.style.display = "none";
 finishbtn.style.display = "none";
 retrybtn.style.display = "none";
 
+// Event listener for the start button
 startbtn.addEventListener("click", function() {
     startbtn.style.display = "none";
     nextbtn.style.display = "block";
@@ -216,112 +203,89 @@ startbtn.addEventListener("click", function() {
     updateTimer();
 });
 
+// Event listener for the next button
 nextbtn.addEventListener("click", function() {
-    
-    
-    if (maxQuestion < 10){
-    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
-    
-    if (!timeIsUp && !selectedAnswer) {
-        // No answer selected
-        document.querySelector('.game-area').classList.add('incorrect');
-        // Revert to original color after 2 second      
+    if (maxQuestion < 10) {
+        const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
+
+        if (!timeIsUp && !selectedAnswer) {
+            // No answer selected
+            document.querySelector('.game-area').classList.add('incorrect');
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('incorrect');
+            }, 2000);
+            return;
+        }
+
+        timeIsUp = false;
+        const selectedAnswerIndex = parseInt(selectedAnswer.value);
+
+        if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
+            document.querySelector('.game-area').classList.add('correct');
+            score++;
+            updateScore();
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('correct');
+            }, 2000);
+        } else  {
+            const correctAnswerIndex = shuffledQuestions[currentQuestionPosition].correctAnswer;
+            const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
+            correctAnswerLabel.classList.add('correct-answer');
+            document.querySelector('.game-area').classList.add('incorrect');
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('incorrect');
+                correctAnswerLabel.classList.remove('correct-answer');
+            }, 2000);
+        }
+        currentQuestionPosition++;
+
         setTimeout(() => {
-            document.querySelector('.game-area').classList.remove('incorrect');
+            createQuestions();
         }, 2000);
-        return;
+
+        if (maxQuestion == 9) {
+            nextbtn.style.display = "none";
+            finishbtn.style.display = "block";
+        }
     }
-
-    timeIsUp = false;
-
-     // Convert selected answer value to integer
-    const selectedAnswerIndex = parseInt(selectedAnswer.value);
-
-    // Check if the selected answer is correct
-if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
-    document.querySelector('.game-area').classList.add('correct');
-    score++;       
-    //Updates score once next button is clicked
-    updateScore();
-    // Revert to original color after 2 second      
-    setTimeout(() => {
-        document.querySelector('.game-area').classList.remove('correct');
-    }, 2000);
-} else  {
-    const correctAnswerIndex = shuffledQuestions[currentQuestionPosition].correctAnswer;
-    const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
-    correctAnswerLabel.classList.add('correct-answer');
-    document.querySelector('.game-area').classList.add('incorrect');
-    // Revert to original color after 2 second
-    setTimeout(() => {
-        document.querySelector('.game-area').classList.remove('incorrect');
-        correctAnswerLabel.classList.remove('correct-answer');
-    }, 2000);
-}
-    currentQuestionPosition++;
-
-    // Go to the next question after a delay of 2 seconds
-    setTimeout(() => {
-    createQuestions();
-    }, 2000);
-    
-    if (maxQuestion == 9){
-        nextbtn.style.display = "none";
-        finishbtn.style.display = "block";
-    }
-   
-
-
-}
 });
 
-
+// Event listener for the finish button
 finishbtn.addEventListener("click", function() {
-    //Display congratulations message and your score
     const congratulationsMessage = document.createElement('div');
     congratulationsMessage.textContent = "Congratulations! You've completed the quiz.";
     const scoreMessage = document.createElement('div');
     scoreMessage.textContent = "Your score: " + score + " out of 10.";
-     // Hide the questions area and finish button
     questionsArea.style.display = "none";
     finishbtn.style.display = "none";
 
-    // Add the congratulations message and score to the leaders area
     leadersArea.appendChild(congratulationsMessage);
     leadersArea.appendChild(scoreMessage);
 
-    retrybtn.style.display = "block"; // Show the retry button
+    retrybtn.style.display = "block";
 });
 
+// Event listener for the retry button
 retrybtn.addEventListener("click", function() {
-    // Reset variables
     currentQuestionPosition = 0;
     score = 0;
     maxQuestion = 0;
     timeLeft = 10;
     timeIsUp = false;
 
-    // Clear the leaders area
     leadersArea.innerHTML = '';
 
-    // Hide the retry button
     retrybtn.style.display = "none";
-    // Reset the score area 
     scoreArea.textContent = 'Score: 0';
 
-    // Display the questions area and restart quiz
     questionsArea.style.display = "block";
     startbtn.style.display = "none";
     nextbtn.style.display = "block";
 
-    // Hide the explanation div
     document.getElementById('explanation').style.display = "none";
 
-    // Reset the timer display
     timerElement.textContent = '';
 
-    // Reset the shuffled questions
     shuffleQuestions();
-
-    createQuestions()
+    createQuestions();
 });
