@@ -8,7 +8,7 @@ const finishbtn = document.getElementById('finishbtn');
 const retrybtn = document.getElementById('retrybtn');
 const scoreArea = document.createElement('div');
 
-// Initialize variables
+// Initialize
 scoreArea.className = 'score-area';
 scoreArea.textContent = 'Score: ';
 let shuffledQuestions = [];
@@ -24,7 +24,7 @@ updateTimer = () => {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--;
 
-    if (timeLeft < 0) {
+    if (timeLeft <0) {
         clearInterval(timerInterval);
         timerElement.textContent = 'Time Up!';
         timeIsUp = true;
@@ -89,6 +89,13 @@ function createQuestions() {
         questionAnswer.appendChild(labeltext);
         questionAnswerArea.appendChild(questionAnswer);
     }
+
+    // Add event listener to radio buttons
+    questionAnswerArea.querySelectorAll('input[type="radio"]').forEach(radioButton => {
+        radioButton.addEventListener('click', function() {
+            stopTimer(); // Stop the timer when any radio button is clicked
+        });
+    });   
 
     questionsArea.innerHTML = '';
     questionsArea.appendChild(questionTitle);
@@ -269,11 +276,22 @@ nextbtn.addEventListener("click", function() {
             nextbtn.style.display = "none";
             finishbtn.style.display = "block";
         }
+        // Reset the timer when clicking the Next button
+        timeLeft = 10;
+        clearInterval(timerInterval);
+        timerElement.textContent = timeLeft + ' seconds';
+        timerInterval = setInterval(updateTimer, 1000);
     }
 });
 
+// Function to stop the timer
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
 // Event listener for the finish button
 finishbtn.addEventListener("click", function() {
+    stopTimer();
     const congratulationsMessage = document.createElement('div');
     congratulationsMessage.textContent = "Congratulations! You've completed the quiz.";
     const scoreMessage = document.createElement('div');
