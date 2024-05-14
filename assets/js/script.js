@@ -24,6 +24,7 @@ let maxQuestion = 0;
 let leadersPosition = 1;
 let timeLeft = 10;
 let timerInterval;
+let timeIsUp = false;
 
     updateTimer = () => {
     timerElement.textContent = timeLeft + ' seconds';

@@ -41,16 +41,51 @@ body {
 
 }
 
+#startbtn {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 50px;
+}
+
+#nextbtn{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 50px;
+}
+
+#finishbtn{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 50px;
+}
+
+#retrybtn{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 50px;
+}
+
 #question-area {
     margin-bottom: 40px;
 }
 
-.button {
-    background: grey;
-    color: blue;
-    padding: 10px 20px;
-    font-size: 25px;
-    width: 45%;
+
+
+.questionAnswers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.questionAnswer {
+    margin: 5px 0;
+}
+
+.questionInput {
+    margin-right: 5px;
 }
 
 .controls-area {
