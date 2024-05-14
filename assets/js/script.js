@@ -57,6 +57,7 @@ function shuffleQuestions() {
 }
 
 function createQuestions() {
+  
     const quizData = shuffledQuestions[currentQuestionPosition];
     const questionTitle = document.createElement('div');
     questionTitle.className = 'questionTitle'; //need to create this class//
@@ -283,8 +284,6 @@ if (userInput !== null) {
 
 
 });
-
-
 
 retrybtn.addEventListener("click", function() {
     questionsArea.style.display = "blocks";
