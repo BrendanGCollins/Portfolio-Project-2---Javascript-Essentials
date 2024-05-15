@@ -194,7 +194,7 @@ const questionsData = [
     },
     {
         question: "Who wrote the Harry Potter book series?",
-        answers: ["George R.R. Martin", "J.R.R. Tolkien", "Suzanne Collins", "J.R.R. Tolkien"],
+        answers: ["George R.R. Martin", "J.R.R. Tolkien", "Suzanne Collins", "J.K. Rowling"],
         correctAnswer: 3
     },
     {
