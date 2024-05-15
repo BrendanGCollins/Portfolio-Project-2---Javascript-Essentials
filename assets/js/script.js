@@ -82,8 +82,6 @@ const moveNext = () => {
             }, 2000);
         }
 
-        
-
 }
 
 // Function to shuffle questions
@@ -301,7 +299,6 @@ nextbtn.addEventListener("click", function() {
             timerInterval = setInterval(updateTimer, 1000);
             return;
         }
-
 
         timeIsUp = false;
         const selectedAnswerIndex = parseInt(selectedAnswer.value);
