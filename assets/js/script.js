@@ -145,9 +145,6 @@ function createQuestions() {
     questionsArea.appendChild(questionAnswerArea);
     document.body.appendChild(scoreArea);
 
-
-  
-
     maxQuestion++;
 }
 
