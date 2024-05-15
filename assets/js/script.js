@@ -20,7 +20,7 @@ let timerInterval;
 let timeIsUp = false;
 
 // Function to update timer
-updateTimer = () => {
+const updateTimer = () => {
     timerElement.textContent = timeLeft + ' seconds';
     timeLeft--;
 
@@ -32,8 +32,8 @@ updateTimer = () => {
     }
 }
 // Function to move to the next question if no answer selected
-moveNext = () => {
-    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
+const moveNext = () => {
+        const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
         console.log("Selected answer:", selectedAnswer);
         if (!timeIsUp && !selectedAnswer) {
             // No answer selected
