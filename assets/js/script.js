@@ -10,7 +10,7 @@ const scoreArea = document.createElement('div');
 
 // Initialize
 scoreArea.className = 'score-area';
-scoreArea.textContent = 'Score: ';
+scoreArea.textContent = 'Score:0 ';
 let shuffledQuestions = [];
 let currentQuestionPosition = 0;
 let score = 0;
@@ -88,10 +88,15 @@ moveNext = () => {
 
 // Function to shuffle questions
 function shuffleQuestions() {
-    shuffledQuestions = [...questionsData];
-    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
+    shuffledQuestions = [];
+    const totalQuestions = questionsData.length;
+
+    while (shuffledQuestions.length < totalQuestions) {
+        const randomIndex = Math.floor(Math.random() * totalQuestions);
+        const selectedQuestion = questionsData[randomIndex];
+        if (!shuffledQuestions.includes(selectedQuestion)) {
+            shuffledQuestions.push(selectedQuestion);
+        }
     }
 }
 
