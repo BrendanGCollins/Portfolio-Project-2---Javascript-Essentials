@@ -1,4 +1,4 @@
-<h1>Rapid-Fire Quiz</h1>
+#Rapid-Fire Quiz
 
 A fun, rapid fire quiz to test your general knowledge. Randomly selected questions and a countdown timer to add pressure! It tracks your score out of 10 and lets you know how you did at the end. Quiz can be retried at the end to try and beat your top score. 
 
@@ -10,8 +10,8 @@ A fun, rapid fire quiz to test your general knowledge. Randomly selected questio
 
 How my pages look across desktop, tablet and mobile.
 
-<h2>Features</h2>
-<h3>Existing Features<h3>
+##Features
+###Existing Features
 
 - Landing page with Explanation
 <p>The landing page is simple and intuitive. It provides a quick explanation of how the quiz works and a big start button.</p>
@@ -25,53 +25,28 @@ How my pages look across desktop, tablet and mobile.
 <p>Game area goes green if correct. If incorrect, score area turns red and the correct answer is highlighted for two seconds before moving automatically to the next question.</p>
 -Congratulations Message
 <p>At the end of the quiz a message will appear letting you know how you did in the quiz.
+-Restart Feature
+<p>At the end of the quiz you can click the restart button to restart the quiz with score and timer reset. Questions will be shhuffled again</p>
 
-Restart feature that resets all data and starts the game again
-
-Featured on all four pages, the full responsive navigation bar includes links to the Logo, Home page, membership, and location page and is identical in each page to allow for easy navigation.
-This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button.
-The nav bar takes up the full width of the screen on larger devices and changes to a burger icon with dropdown menu on smaller screens
 ![Nav Bar] Full screen 
-Mobile Screen 
 
-The landing page image
-
-The landing includes our club logo so that a user immediately knows where they are.
-This section introduces the user to Douglas Gymnastics Club with an eye catching background image to draw attention.
 ![Landing Page] 
 
-What we offer section
-
-This section provides information on all the classes and camps we offer in the club.
 ![What we offer] 
 
 The Footer
 
-The footer section includes links to the relevant social media sites for Douglas Gymnastics Club. The links will open to a new tab to allow easy navigation for the user.
-The footer is valuable to the user as it encourages them to keep connected via our social media.
 ![Footer] 
-
-Membership
-
-This page allows users to get singed up for our classes and camps. All required fields are marked clearly. A custom confirmation page was used via "confirmation.html" so that a user knows they have successfully sent us their details.
-
-Different images have been used across different screen sizes to better fill the page and make it appealing on all screen sizes.
 
 ![Membership] 
 
-
-The Location Page
-
-This page provides our club location, contact details, a table with office opening hours and an interactive map with the club location.
 ![location Page] 
 
-Features Left to Implement
-I needed to keep the scope for this project tight but i could add more features to the page.
-Add a gallery page showing members in the club during classes and camps.
-Create a seperate html page for workshops so that classes and workshops are seperate.
-Imbed a feed to the main page showing the club's facebook/instagram page.
-Add separate html page with log in for current members to pay term fees.
-Testing
+###Features Left to Implement
+
+
+
+##Testing
 All html and css was passed through w3c validator, results shared below.
 
 Project was tested with lighthouse to ensure accessibility and performance was to a high quality. I ran a test for mobile pages and another for desktop pages. Results are posted below.

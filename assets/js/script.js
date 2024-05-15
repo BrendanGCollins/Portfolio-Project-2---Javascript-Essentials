@@ -33,25 +33,50 @@ updateTimer = () => {
 }
 // Function to move to the next question if no answer selected
 moveNext = () => {
-    // Reset timeIsUp flag
-    timeIsUp = false;
+    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
+        console.log("Selected answer:", selectedAnswer);
+        if (!timeIsUp && !selectedAnswer) {
+            // No answer selected
+            document.querySelector('.game-area').classList.add('incorrect');
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('incorrect');
+            }, 2000);
+            return;
+        }
 
-    // Increment question position
-    currentQuestionPosition++;
 
-    // Create the next question
-    createQuestions();
+        if (timeIsUp) {
+            const correctAnswerIndex = shuffledQuestions[currentQuestionPosition].correctAnswer;
+            const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
+            correctAnswerLabel.classList.add('correct-answer');
+            document.querySelector('.game-area').classList.add('incorrect');
+            
+            return;
+        }
 
-    // Start the timer for the next question
-    timeLeft = 10;
-    timerElement.textContent = timeLeft + ' seconds';
-    timerInterval = setInterval(updateTimer, 1000);    
+        timeIsUp = false;
+        const selectedAnswerIndex = parseInt(selectedAnswer.value);
 
-    // Check if it's the last question and adjust button visibility accordingly
-    if (maxQuestion === 9) {
-        nextbtn.style.display = "none";
-        finishbtn.style.display = "block";
-    }
+        if (selectedAnswerIndex === shuffledQuestions[currentQuestionPosition].correctAnswer) {
+            document.querySelector('.game-area').classList.add('correct');
+            score++;
+            updateScore();
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('correct');
+            }, 2000);
+        } else  {
+            const correctAnswerIndex = shuffledQuestions[currentQuestionPosition].correctAnswer;
+            const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
+            correctAnswerLabel.classList.add('correct-answer');
+            document.querySelector('.game-area').classList.add('incorrect');
+            setTimeout(() => {
+                document.querySelector('.game-area').classList.remove('incorrect');
+                correctAnswerLabel.classList.remove('correct-answer');
+            }, 2000);
+        }
+
+        
+
 }
 
 // Function to shuffle questions
@@ -101,6 +126,17 @@ function createQuestions() {
     questionsArea.appendChild(questionTitle);
     questionsArea.appendChild(questionAnswerArea);
     document.body.appendChild(scoreArea);
+
+
+  // Disable radio buttons if no answer is selected
+  if (!timeIsUp) {
+    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + currentQuestionPosition + '"]:checked');
+    if (!selectedAnswer) {
+        questionAnswerArea.querySelectorAll('input[type="radio"]').forEach(radioButton => {
+            radioButton.disabled = true;
+        });
+    }
+}
 
     maxQuestion++;
 }
@@ -245,6 +281,20 @@ nextbtn.addEventListener("click", function() {
             }, 2000);
             return;
         }
+
+        if (timeIsUp && !selectedAnswer) {
+            // No answer selected
+            document.querySelector('.game-area').classList.add('incorrect');
+            currentQuestionPosition++;        
+            createQuestions();       
+            document.querySelector('.game-area').classList.remove('incorrect');
+            timeLeft = 10;
+            clearInterval(timerInterval);
+            timerElement.textContent = timeLeft + ' seconds';
+            timerInterval = setInterval(updateTimer, 1000);
+            return;
+        }
+
 
         timeIsUp = false;
         const selectedAnswerIndex = parseInt(selectedAnswer.value);
