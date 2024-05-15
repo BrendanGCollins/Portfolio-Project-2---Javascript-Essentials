@@ -328,4 +328,6 @@ retrybtn.addEventListener("click", function() {
 
     shuffleQuestions();
     createQuestions();
+        timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
 });

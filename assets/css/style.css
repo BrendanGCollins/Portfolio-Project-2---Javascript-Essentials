@@ -1,5 +1,6 @@
 body {
     /* Body styles */
+    font-family: 'oswald', sans-serif;
     background: lightblue;
     padding: 0;
     margin: 0;
@@ -8,19 +9,26 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
 }
 
 .heading {
     /* Heading styles */
     position: absolute;
-    top: 0;
+    top: 2px;
 }
 
 #timer{
     /* Timer styles */
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;  
+    width: 150px;  
     font-size: 25px;
-    padding: 5px;
     font-weight: bold;
 }
 
@@ -32,16 +40,16 @@ body {
     padding: 20px;
     text-align: center;
     font-size: 25px;
-    height: 75%;
+    height: 70%;
     width: 80%;
-    margin-bottom: 10px;
+    margin-top: 10px;
     box-shadow: 0 0 10px 5px;
     border-radius: 10px;
 
 }
 
-/* Button styles */
 #startbtn, #nextbtn, #finishbtn, #retrybtn {
+    /* Button styles */
     background-color: green;
     color: whitesmoke;
     font-size: 25px;
@@ -85,6 +93,20 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.score-area {
+   /* Styles for the score area */
+   position: fixed;
+   bottom: 10px;
+   left: 10px;
+   background: white;
+   border: 2px solid #000;
+   padding: 10px;
+   border-radius: 5px;  
+   width: 100px;  
+   font-size: 25px;
+   font-weight: bold;
 }
 
 .game-area.correct {
