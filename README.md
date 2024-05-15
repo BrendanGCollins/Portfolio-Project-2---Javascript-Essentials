@@ -14,18 +14,26 @@ How my pages look across desktop, tablet and mobile.
 - Landing page with Explanation
    - The landing page is simple and intuitive. It provides a quick explanation of how the quiz works and a big start button.
 - Question Counter
-   - A counter to keep track of what number question you are on   
+   - A counter to keep track of what number question you are on
+   <img src="assets/images/question_counter.png">   
 - Randomly chosen questions each time
    - I have added an array of 20 questions and shuffle the questions so that each time you start the quiz you get different questions given to you. No question will be repeated twice in the quiz.
+   <img src="assets/images/random_questions.png">
 - Countdown Timer
-  - A 10 second countdown timer starts as soon as you click the start button. If it reaches zero you will get 0 points. You will also be shown the correct answer and can review the question before clicking 'next' to continue with the quiz. Radio buttons are disabled if timer reaches zero to prevent a user clicking the correct answer after it has been shown.
+  - A 10 second countdown timer starts as soon as you click the start button. If it reaches zero you will get 0 points and it will say 'Time up!'. You will also be shown the correct answer and can review the question before clicking 'next' to continue with the quiz. Radio buttons are disabled if timer reaches zero to prevent a user clicking the correct answer after it has been shown.
   - Timer resets for every question and stops once you finish the last question.
+  <img src="assets/images/countdown_timer.png">
+  <img src="assets/images/time_up.png">
 - Score Counter
-  - A score counter to track your score out of 10. One point for each correct answer, no point if incorrect or if not answered within the 10 seconds.
+  - A score counter to track your score out of 10. One point for each correct answer, no point if incorrect or if not answered within the 10 seconds. Hidden until the quiz starts.
+  <img src="assets/images/score_counter.png">
 - Visual Cues
   - Game area goes green if correct. If incorrect, score area turns red and the correct answer is highlighted for two seconds before moving automatically to the next question.
+  <img src="assets/images/incorrect.png">
+  <img src="assets/images/correct.png">
 - Congratulations Message
   - At the end of the quiz a message will appear letting you know how you did in the quiz.
+  <img src="assets/images/congratulations_message.png">
 - Restart Feature
 - At the end of the quiz you can click the restart button to restart the quiz with score and timer reset. Questions will be shhuffled again.
 
