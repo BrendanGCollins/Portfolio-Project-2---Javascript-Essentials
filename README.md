@@ -1,5 +1,6 @@
-JavaScript Coding Quiz
-A fun, rapid fire quiz to test your javascript knowledge. Randomly selected questions and a countdown timer to add pressure! 
+<h1>Rapid-Fire Quiz</h1>
+
+A fun, rapid fire quiz to test your general knowledge. Randomly selected questions and a countdown timer to add pressure! It tracks your score out of 10 and lets you know how you did at the end. Quiz can be retried at the end to try and beat your top score. 
 
 
 
@@ -9,12 +10,22 @@ A fun, rapid fire quiz to test your javascript knowledge. Randomly selected ques
 
 How my pages look across desktop, tablet and mobile.
 
-Features
-Randomly chosen questions each time.
-10 Second countdown timer that automatically moves you to the next question if you run out of time.
-Score counter to track your score.
-Visual cues for correct/incorrect answers.
-Congratulations page displaying your score.
+<h2>Features</h2>
+<h3>Existing Features<h3>
+
+- Landing page with Explanation
+<p>The landing page is simple and intuitive. It provides a quick explanation of how the quiz works and a big start button.</p>
+-Randomly chosen questions each time
+<p>I have added an array of 20 questions and shuffle the questions so that each time you start the quiz you get different questions given to you</p>
+-Countdown Timer
+<p>A 10 second countdown timer starts as soon as you click the start button. If it reaches zero you move to the next question automatically.<br>Timer resets for every question and stops once you finish the last question.</p>
+-Score Counter
+<p>A score counter to track your score out of 10. One point for each correct answer, no point if incorrect or if not answered within the 10 seconds.</p>
+-Visual Cues
+<p>Game area goes green if correct. If incorrect, score area turns red and the correct answer is highlighted for two seconds before moving automatically to the next question.</p>
+-Congratulations Message
+<p>At the end of the quiz a message will appear letting you know how you did in the quiz.
+
 Restart feature that resets all data and starts the game again
 
 Featured on all four pages, the full responsive navigation bar includes links to the Logo, Home page, membership, and location page and is identical in each page to allow for easy navigation.
