@@ -124,3 +124,31 @@ body {
     color: green;
     font-weight: bold;
 }
+
+/* Media query: Tablets and larger */
+@media screen and (min-width: 768px) {
+    /* Adjust heading font size */
+    .heading {
+        font-size: 50px;
+    }
+
+    #timer {
+         /* Adjust timer font size */
+        font-size: 40px;
+        padding: 10px 40px;
+    }
+     /* Adjust score area font size */
+    .score-area {
+        font-size: 40px;
+        padding: 10px 40px;
+    }
+ /* Adjust button font size */
+  /* Adjust button padding */
+    #startbtn,
+    #nextbtn,
+    #finishbtn,
+    #retrybtn {
+        font-size: 40px;
+        padding: 15px 40px;
+    }
+}

@@ -21,7 +21,7 @@ let timeIsUp = false;
 
 // Function to update timer
 const updateTimer = () => {
-    timerElement.textContent = timeLeft + ' seconds';
+    timerElement.textContent = timeLeft + ' Seconds';
     timeLeft--;
 
     if (timeLeft <0) {
