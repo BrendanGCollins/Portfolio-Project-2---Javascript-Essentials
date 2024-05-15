@@ -129,7 +129,7 @@ body {
 @media screen and (min-width: 768px) {
     /* Adjust heading font size */
     .heading {
-        font-size: 50px;
+        font-size: 40px;
     }
 
     #timer {
