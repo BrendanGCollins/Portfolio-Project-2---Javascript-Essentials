@@ -50,6 +50,13 @@ moveNext = () => {
             const correctAnswerLabel = document.querySelector('.questionAnswers label:nth-child(' + (correctAnswerIndex + 1) + ')');
             correctAnswerLabel.classList.add('correct-answer');
             document.querySelector('.game-area').classList.add('incorrect');
+            // Disable radio buttons if no answer is selected
+            
+            const questionAnswerArea = document.getElementById('questions-area');
+                    questionAnswerArea.querySelectorAll('input[type="radio"]').forEach(radioButton => {
+                        radioButton.disabled = true;
+                    });
+    
             
             return;
         }
@@ -94,9 +101,15 @@ function createQuestions() {
     updateTimer();
 
     const quizData = shuffledQuestions[currentQuestionPosition];
+    
+    // Create question number element
+    const questionNumberElement = document.createElement('div');
+    questionNumberElement.className = 'questionNumber';
+    questionNumberElement.textContent = 'Question ' + (currentQuestionPosition + 1);
+    
     const questionTitle = document.createElement('div');
     questionTitle.className = 'questionTitle';
-    questionTitle.textContent = quizData.question;
+    questionTitle.innerHTML = 'Question ' + (currentQuestionPosition + 1) + ':<br>' + quizData.question;
     const questionAnswerArea = document.createElement('div');
     questionAnswerArea.className = 'questionAnswers';
 
@@ -128,15 +141,7 @@ function createQuestions() {
     document.body.appendChild(scoreArea);
 
 
-  // Disable radio buttons if no answer is selected
-  if (!timeIsUp) {
-    const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + currentQuestionPosition + '"]:checked');
-    if (!selectedAnswer) {
-        questionAnswerArea.querySelectorAll('input[type="radio"]').forEach(radioButton => {
-            radioButton.disabled = true;
-        });
-    }
-}
+  
 
     maxQuestion++;
 }
