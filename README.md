@@ -42,6 +42,65 @@ How my pages look across desktop, tablet and mobile.
 - Highscore board where users could input their name and be added to a leaderboard.
 - Addittional quiz options to test different areas of knowledge.
 
+## Design
+
+### Color Scheme
+The color scheme for the **Rapid-Fire Quiz** was designed with a focus on creating an energetic yet friendly environment to motivate users throughout the quiz experience.
+
+- **Primary Colors**:
+  - **Light Blue**: The background color is a soft light blue, which creates a calming effect while reducing stress, something crucial when users are taking a timed quiz. Blue is known for enhancing focus and concentration, making it a suitable choice for the quiz environment.
+  - **Green**: A vibrant green is used for the correct answers, providing a positive visual cue that promotes feelings of success and accomplishment.
+  - **Red**: Red is used to indicate incorrect answers or errors. Red catches the user’s attention immediately and creates an urgency, reinforcing the concept of "incorrect".
+
+- **Supporting Colors**:
+  - **White and Black**: Used for readability, black text on a white background provides a clean and classic contrast, making sure the quiz is easy to read. These colors also help keep the focus on the quiz questions rather than being distracted by background elements.
+  
+The chosen colors were intended to provide strong visual indicators and ensure that the interface is accessible and clear. Color contrast has also been considered to make sure that both visually impaired users and those in a high-pressure environment can easily identify the visual elements.
+
+### Typography
+The chosen font family for this project is **'Oswald'**, sourced from Google Fonts.
+
+- **Font Rationale**:
+  - **Oswald**: Oswald is a sans-serif font that has a modern and clean design. This makes the text legible, which is particularly important for a timed quiz where users need to read and understand questions quickly. The use of Oswald also adds a subtle visual dynamism, which is in line with the idea of a rapid-fire quiz.
+
+- **Header**:
+  - The quiz starts with a header that is centered and visually appealing. It includes the title "Rapid-Fire Quiz" with question mark icons on either side, enhancing the playful yet inquisitive theme. The icons from **Font Awesome** provide a modern and cohesive aesthetic.
+
+- **Main Content**:
+  - The main quiz area was designed to be straightforward and centered on the page to minimize distractions.
+  - Elements such as the **question counter**, **score counter**, and **timer** were designed to be clearly visible but not intrusive. These components are separated visually to help the user quickly distinguish between each feature without confusion.
+  - **Game Area**: The main "game-area" uses visual cues for correctness or errors by changing background colors. Green indicates a correct response, reinforcing positive behavior, while red indicates an incorrect response.
+  
+- **Button Design**:
+  - The buttons such as **Start**, **Next**, **Finish**, and **Retry** have a large, bold appearance to facilitate easy clicking, especially on mobile devices. The green background provides a call-to-action that encourages users to interact with the quiz.
+
+### Visual Cues
+The use of visual cues is an essential part of the quiz experience:
+
+- **Correct Answer Feedback**:
+  - Correct answers are indicated with a **green background** and bold labels to make the experience of getting a question correct feel rewarding.
+  
+- **Incorrect Answer Feedback**:
+  - If an incorrect answer is chosen, the quiz area background briefly turns **red**, and the correct answer is highlighted in green after a two-second delay. This helps users learn from their mistakes without feeling rushed.
+
+- **Feedback for No Answer**:
+  - If the timer runs out without an answer being selected, the correct answer is highlighted while disabling the radio buttons to indicate that the time is up. This prevents users from interacting with the expired question, keeping the quiz fair.
+
+### User Flow Considerations
+The user flow was designed to maintain an intuitive progression from one question to the next:
+
+- The **"Start" button** begins the quiz, which then moves smoothly through **ten randomized questions**.
+- The **"Next" button** enables users to proceed after reviewing each question, with visual feedback to indicate correctness.
+- Upon reaching the end, the **"Finish" button** shows a **"Congratulations"** message, providing closure and positive reinforcement.
+- The **"Retry" button** allows users to immediately restart the quiz, giving an opportunity to improve their score, thereby fostering a replayable experience.
+
+### Visual Hierarchy
+Visual hierarchy has been considered in the layout to help users quickly understand the important elements:
+
+- **Title/Header**: The title uses a larger font size and icons to establish the quiz branding and attract attention.
+- **Question and Timer**: The question text is given prominence with larger fonts, while the timer is placed in a visible location at the bottom right to add urgency.
+- **Score and Buttons**: The score is displayed in a fixed position to allow the user to keep track throughout the quiz. The buttons are also large and bold, with enough space between them to reduce accidental clicks.
+
 ## Testing
 - All html,css and javascript was passed through w3c validator and [https://jshint.com] .  Results shared below.
 
