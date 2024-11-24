@@ -1,6 +1,6 @@
 body {
     /* Body styles */
-    font-family: 'oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
     background: lightblue;
     padding: 0;
     margin: 0;
@@ -12,13 +12,18 @@ body {
     height: 85vh;
 }
 
+header {
+    /* Header styling */
+    text-align: center;
+}
+
 .heading {
     /* Heading styles */
     position: absolute;
     top: 2px;
 }
 
-#timer{
+#timer {
     /* Timer styles */
     position: fixed;
     bottom: 10px;
@@ -45,7 +50,6 @@ body {
     margin-top: 10px;
     box-shadow: 0 0 10px 5px;
     border-radius: 10px;
-
 }
 
 #startbtn, #nextbtn, #finishbtn, #retrybtn {
@@ -56,9 +60,11 @@ body {
     font-weight: bold;
     padding: 20px 50px;
     border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
-#question-area {
+#questions-area {
     /* Styles for the container of the questions */
     margin-bottom: 40px;
 }
@@ -125,6 +131,18 @@ body {
     font-weight: bold;
 }
 
+.visually-hidden {
+    /* Styles for visually hidden elements for accessibility */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 /* Media query: Tablets and larger */
 @media screen and (min-width: 768px) {
     /* Adjust heading font size */
@@ -137,13 +155,13 @@ body {
         font-size: 40px;
         padding: 10px 40px;
     }
-     /* Adjust score area font size */
+    /* Adjust score area font size */
     .score-area {
         font-size: 40px;
         padding: 10px 40px;
     }
- /* Adjust button font size */
-  /* Adjust button padding */
+    /* Adjust button font size */
+    /* Adjust button padding */
     #startbtn,
     #nextbtn,
     #finishbtn,
