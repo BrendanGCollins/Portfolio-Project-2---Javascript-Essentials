@@ -34,7 +34,6 @@ const updateTimer = () => {
 // Function to move to the next question if no answer selected
 const moveNext = () => {
         const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
-        console.log("Selected answer:", selectedAnswer);
         if (!timeIsUp && !selectedAnswer) {
             // No answer selected
             document.querySelector('.game-area').classList.add('incorrect');
@@ -277,7 +276,6 @@ startbtn.addEventListener("click", function() {
 nextbtn.addEventListener("click", function() {
     if (maxQuestion < 10) {
         const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
-        console.log("Selected answer:", selectedAnswer);
         if (!timeIsUp && !selectedAnswer) {
             // No answer selected
             document.querySelector('.game-area').classList.add('incorrect');
