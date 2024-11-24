@@ -17,32 +17,45 @@
     <title>Coding Quiz</title>
 </head>
 <body>
-    <!-- Heading -->
-    <h1 class="heading"><i class="fa-sharp fa-regular fa-lg fa-circle-question" style="color: #278325;"></i>Rapid-Fire Quiz<i class="fa-sharp fa-regular fa-lg fa-circle-question" style="color: #278325;"></i></h1>
-    <!-- Timer Area -->
-    <div id="timer">Timer Area</div>
-    <!-- Timer Area -->
-    <div class="game-area">
-        <div id="explanation">
-             <!-- Explanation Section -->
-            <p>10 Rapid-fire questions.</p>
-            <p>10 seconds per question</p>
-            <p>Think Fast!</p>
-        </div>
-        <!-- Questions Area -->
-        <div id="questions-area"></div>
-        <!-- Answers Area -->
-        <div id="answers-area"></div>
-        <!-- Controls Area -->
-        <div class="controls-area">
-            <button id="startbtn">Start</button>
-            <button id="nextbtn">Next</button>
-            <button id="finishbtn">Finish</button>
-            <button id="retrybtn">Retry</button>
-        </div>
-        <!-- Leaders Area -->
-        <div id="leaders-area"></div>        
-    </div>
+    <!-- Header Section -->
+    <header>
+        <h1 class="heading"><i class="fa-sharp fa-regular fa-lg fa-circle-question" style="color: #278325;"></i>Rapid-Fire Quiz<i class="fa-sharp fa-regular fa-lg fa-circle-question" style="color: #278325;"></i></h1>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Timer Section -->
+        <section id="timer" aria-label="Timer Area">Timer Area</section>
+
+        <!-- Game Area -->
+        <section class="game-area">
+            <!-- Explanation Section -->
+            <section id="explanation" aria-labelledby="explanation-heading">
+                <h2 id="explanation-heading" class="visually-hidden">Explanation Section</h2>
+                <p>10 Rapid-fire questions.</p>
+                <p>10 seconds per question</p>
+                <p>Think Fast!</p>
+            </section>
+            
+            <!-- Questions Area -->
+            <section id="questions-area" aria-label="Questions Area"></section>
+            
+            <!-- Answers Area -->
+            <section id="answers-area" aria-label="Answers Area"></section>
+            
+            <!-- Controls Area -->
+            <nav class="controls-area" aria-label="Quiz Controls">
+                <button id="startbtn">Start</button>
+                <button id="nextbtn">Next</button>
+                <button id="finishbtn">Finish</button>
+                <button id="retrybtn">Retry</button>
+            </nav>
+
+            <!-- Leaders Area -->
+            <section id="leaders-area" aria-label="Leaders Area"></section>
+        </section>
+    </main>
+
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
 </body>
