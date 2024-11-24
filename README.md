@@ -200,6 +200,49 @@ Click on "Deployments" in the bottom right of the sceen.
 
 The live link can be found here - [https://brendangcollins.github.io/Portfolio-Project-2---Javascript-Essentials/]
 
+### Cloning the Repository
+If you want to run or modify the project locally, follow these steps to clone the repository:
+
+1. **Navigate to the GitHub repository**:
+   Visit the [repository page](https://github.com/brendangcollins/Portfolio-Project-2---Javascript-Essentials).
+
+2. **Click on the "Code" button**:  
+   You will see a green button labeled **Code** at the top right of the repository page. Click it to reveal cloning options.
+
+3. **Clone the repository**:
+   - **Using HTTPS**: Copy the HTTPS URL (`https://github.com/brendangcollins/Portfolio-Project-2---Javascript-Essentials.git`) and run the following command in your terminal:
+     ```sh
+     git clone https://github.com/brendangcollins/Portfolio-Project-2---Javascript-Essentials.git
+     ```
+   - **Using SSH**: Copy the SSH URL (`git@github.com:brendangcollins/Portfolio-Project-2---Javascript-Essentials.git`) and run:
+     ```sh
+     git clone git@github.com:brendangcollins/Portfolio-Project-2---Javascript-Essentials.git
+     ```
+   - **Using GitHub CLI**: If you have GitHub CLI installed, you can clone by running:
+     ```sh
+     gh repo clone brendangcollins/Portfolio-Project-2---Javascript-Essentials
+     ```
+
+4. **Open the project in your code editor**:  
+   Once cloned, navigate to the project directory:
+   ```sh
+   cd Portfolio-Project-2---Javascript-Essentials
+
+### Forking the Repository
+To make your own copy of the repository to work on:
+
+1. **Navigate to the GitHub repository**:
+   Visit the [repository page](https://github.com/brendangcollins/Portfolio-Project-2---Javascript-Essentials).
+
+2. **Click on the "Fork" button**:  
+   In the top-right corner of the page, click the Fork button. This will create your own copy of the project in your GitHub account.
+
+3. **Clone the forked repository**:
+   After forking, you can clone your own version by following the steps above to work locally.
+
+4. **Make changes**:  
+   Feel free to make any changes or enhancements. Once you have completed any modifications, you can commit and push the changes to your forked repository.  
+
 ## Credits
 Lots of questions answered through [https://www.w3schools.com/]
 Lots of questions answered through [https://stackoverflow.com/]
