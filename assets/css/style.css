@@ -15,12 +15,9 @@ body {
 header {
     /* Header styling */
     text-align: center;
-}
-
-.heading {
-    /* Heading styles */
-    position: absolute;
-    top: 2px;
+    width: 100%;
+    padding: 20px 0; /* Add padding for spacing */
+    font-size: 2rem; /* Set font size for the header text */
 }
 
 #timer {
