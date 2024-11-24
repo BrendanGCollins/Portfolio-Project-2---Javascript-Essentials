@@ -1,5 +1,6 @@
 // Define variables
 const timerElement = document.getElementById('timer');
+const timerMessageElement = document.getElementById('timer-message');
 const questionsArea = document.getElementById('questions-area');
 const leadersArea = document.getElementById('leaders-area');
 const startbtn = document.getElementById('startbtn');
@@ -24,13 +25,20 @@ const updateTimer = () => {
     timerElement.textContent = timeLeft + ' Seconds';
     timeLeft--;
 
-    if (timeLeft <0) {
+    if (timeLeft < 0) {
         clearInterval(timerInterval);
         timerElement.textContent = 'Time Up!';
         timeIsUp = true;
+
+        // Show the "Time's Up" message
+        timerMessageElement.textContent = "Time's Up! Please click 'Next' to continue.";
+        timerMessageElement.classList.remove('hidden-message');
+        timerMessageElement.classList.add('visible-message');
+
         moveNext();
     }
 }
+
 // Function to move to the next question if no answer selected
 const moveNext = () => {
         const selectedAnswer = document.querySelector('input[name="chosenAnswer_' + (currentQuestionPosition) + '"]:checked');
@@ -81,6 +89,15 @@ const moveNext = () => {
             }, 2000);
         }
 
+}
+
+// Function to start the timer and reset message
+const startTimer = () => {
+    timeLeft = 10; // Reset the timer
+    timeIsUp = false;
+    timerMessageElement.classList.remove('visible-message');
+    timerMessageElement.classList.add('hidden-message');
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
 // Function to shuffle questions
