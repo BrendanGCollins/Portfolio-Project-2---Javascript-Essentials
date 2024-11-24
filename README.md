@@ -35,7 +35,7 @@ How my pages look across desktop, tablet and mobile.
   - At the end of the quiz a message will appear letting you know how you did in the quiz.
   <img src="assets/images/congratulations_message.png">
 - Restart Feature
-- At the end of the quiz you can click the restart button to restart the quiz with score and timer reset. Questions will be shhuffled again.
+- After completing the quiz, users can click the restart button to reset the timer, score, and questions.
 
 ### Features Left to Implement
 
@@ -69,83 +69,113 @@ How my pages look across desktop, tablet and mobile.
 
 ### Manual Testing
 
-  <table>
+<table>
     <tr>
-            <th>Action</th>
-            <th>Expected Behavior</th>
-            <th>Pass or Fail</th>
+        <th>Action</th>
+        <th>Expected Behavior</th>
+        <th>Pass or Fail</th>
     </tr>
     <tr>
-            <td>Click 'Start' button</td>
-            <td>Random question appears, timer starts counting down and current score appears</td>
-            <td>Pass</td>
+        <td>Click 'Start' button</td>
+        <td>Random question appears, timer starts counting down, score counter appears, and 'Next' button becomes visible.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Correct answer is selected but next button is not clicked</td>
-            <td>Timer stops until 'next' button is clicked</td>
-            <td>Pass</td>
+        <td>Check the 'Next' button before answering the question</td>
+        <td>'Next' button should be disabled until an answer is selected or the timer runs out.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Click on radio buttons after timer runs out</td>
-            <td>Radio buttons should be disabled and I cannot click an answer</td>
-            <td>Pass</td>
-    </tr> 
-    <tr>
-            <td>Click 'next' button after selecting correct answer</td>
-            <td>'Game area' turns green to confirm correct answer, score is updates to reflect this. Next question loads after two seconds and timer restarts</td>
-            <td>Pass</td>
+        <td>Select the correct answer but do not click 'Next'</td>
+        <td>Timer stops</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Incorrect answer is selected but 'next' button is not clicked</td>
-            <td>Timer stops until 'next' button is clicked</td>
-            <td>Pass</td>
+        <td>Click 'Next' button after selecting the correct answer</td>
+        <td>Game area turns green briefly, score is incremented, and the next question appears after a delay of 2 seconds. Timer restarts from 10 seconds.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Click 'next' button after selecting incorrect answer</td>
-            <td>'Game area' turns red to confirm incorrect answer, correct answer is higlighted in green. Score does not increase. Next question loads after delay of two seconds and timer restarts</td>
-            <td>Pass</td>
+        <td>Select incorrect answer and click 'Next'</td>
+        <td>Game area turns red briefly, correct answer is highlighted, score remains unchanged. The next question appears after 2 seconds with a reset timer.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Start quiz and select no answer and let timer count to 0</td>
-            <td>'Game area' turns red to confirm incorrect answer, correct answer is higlighted in green. Radio buttons are disabled to prevent clicking an answer.</td>
-            <td>Pass</td>
+        <td>Select no answer and let timer count down to zero</td>
+        <td>Game area turns red, the correct answer is highlighted, score does not increment. Radio buttons are disabled after time runs out. Player must click next to proceed</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>After letting timer run to 0 and quiz showing the correct answer click on 'next' button</td>
-            <td>Quiz resumes on the next question, radio buttons re-enabled and timer restarts</td>
-            <td>Pass</td>
+        <td>Click 'Next' button after timer runs out</td>
+        <td>The next question appears with radio buttons re-enabled, timer restarts, and the game continues.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Reach question 10 on the quiz</td>
-            <td>'Next' button is hidden and 'Finish' button appears in its place</td>
-            <td>Pass</td>
+        <td>Click on radio buttons after timer runs out</td>
+        <td>Radio buttons are disabled, and no option can be selected after time runs out.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Click 'Finish' button </td>
-            <td>Congratulations message appears showing how you scored in the quiz. Timer stops. 'Finish' button is hidden and replaced with 'retry' button</td>
-            <td>Pass</td>
+        <td>Reach the final (10th) question</td>
+        <td>'Next' button is hidden, and 'Finish' button appears to indicate the end of the quiz.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Click 'Retry' button</td>
-            <td>Question counter resets. Timer resets. Score resets. A new random question is generated</td>
-            <td>Pass</td>
+        <td>Click 'Finish' button</td>
+        <td>Congratulations message is displayed along with the final score. Timer stops, and 'Retry' button appears.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Reload page multiple times</td>
-            <td>Ensure questions are random</td>
-            <td>Pass</td>
+        <td>Click 'Retry' button</td>
+        <td>Quiz resets with the timer, score, and question counter all reset to initial states. New random questions are displayed.</td>
+        <td>Pass</td>
     </tr>
     <tr>
-            <td>Restart the quiz multiple times</td>
-            <td>Ensure questions are random</td>
-            <td>Pass</td>
-    </tr>    
+        <td>Refresh the page multiple times</td>
+        <td>Ensure a new set of random questions appears each time.</td>
+        <td>Pass</td>
+    </tr>
     <tr>
-            <td>Play through the quiz multiple times</td>
-            <td>Ensure no repeating question</td>
-            <td>Pass</td>
-    </tr>          
-  </table>
+        <td>Restart the quiz multiple times</td>
+        <td>Verify that each restart produces a different order of questions from the question pool.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Play through the quiz multiple times without closing the page</td>
+        <td>Ensure no repeated questions in the same session and that the game functions as expected every time.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Click 'Start' button while resizing the window</td>
+        <td>The timer and buttons adjust dynamically without disrupting the ongoing quiz.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Select an answer and try clicking on it again</td>
+        <td>Once an answer is selected, clicking again should not affect the answer (since it's a radio button).</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Click 'Next' quickly before feedback is given</td>
+        <td>The current question's answer is considered, and the next question loads seamlessly without interruption. Timer is reset properly.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Click 'Retry' button immediately after completing the quiz</td>
+        <td>The game area resets without lag, and a new question is displayed with the timer starting at 10 seconds.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>View quiz in different browsers (Chrome, Firefox, Safari, Edge)</td>
+        <td>The game works consistently across all major browsers without any layout or functionality issues.</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>Attempt to answer the same question twice (using 'Back' navigation)</td>
+        <td>The browser’s 'Back' button does not allow cheating; the quiz cannot be manipulated to re-answer.</td>
+        <td>Pass</td>
+    </tr>
+</table>
 
 ## Unfixed Bugs
 - No bugs found at the end of this project.
